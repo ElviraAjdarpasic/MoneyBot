@@ -8,11 +8,16 @@ def setup_logger(name: str):
     if logger.handlers:
         return logger 
 
-        logger.setLevel(logging.INFO)
+    #Sätter loggnivån till INFO (Skriver info)
+    logger.setLevel(logging.INFO)
 
-        handler = logging.StreamHnadler()
-        formatter = logging.Formatter("[%(name)s] %(levelname)s: %(message)s")
-        handler.setFormatter(formatter)
+    #Bestämmer VAR meddellandet ska visas
+    handler = logging.StreamHandler()
+    #Bestämmer HUR medleandet ska se ut
+    formatter = logging.Formatter("[%(name)s] %(levelname)s: %(message)s")
+        
+    handler.setFormatter(formatter)
 
-        logger.addHandler(handler)
-        return logger
+    logger.addHandler(handler)
+        
+    return logger

@@ -1,6 +1,6 @@
 import os
 from finance.analysis import FinanceAnalysis
-from system.loggin_util import setup_logger
+from logger import setup_logger
 
 #Importera funktioner för att spara och visa rapporter
 from report_manager import add_report, list_reports, show_report
@@ -13,12 +13,12 @@ def clear_screen():
 def safe_int_input(prompt: str) -> int:
     while True:
         try:
-            return int(input(promt))
+            return int(input(prompt))
         except ValueError:
             print("Please enter a valid number!")
 
 #Start funktionen för själva MoneyBot
-def start_moneybot()-> str:
+def run_moneybot_analysis()-> str:
     logger = setup_logger("MoneyBot")
     logger.info("Running new economic analysis")
     
@@ -43,7 +43,7 @@ def start_moneybot()-> str:
 #Huvudmenyn
 def main_menu():
     while True:
-        print("\n=== MoneyBot ===")
+        print("\n\n=== MoneyBot ===")
         print("1. Create new report")
         print("2. View previous reports")
         print("3. Exit")
@@ -59,8 +59,7 @@ def main_menu():
             input("\nPress Enter to continue...")
         elif choice == "2":
             clear_screen()
-            reports = list_reports()        
-            if reports: 
+            if list_reports():       
                 try:
                     num = int(input("Select report number: ")) - 1
                     clear_screen()
@@ -78,6 +77,7 @@ def main_menu():
 
         else:
             print("Invalid choice, please try again.")
+            input("\nPress Enter to continue...")
 
         #Rensa inför nästa varv i loopen
         clear_screen()

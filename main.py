@@ -1,9 +1,9 @@
 import os
 from finance.analysis import FinanceAnalysis
-from logger import setup_logger
+from system.logger import setup_logger
 
 #Importera funktioner för att spara och visa rapporter
-from report_manager import add_report, list_reports, show_report
+from reports.report_manager import add_report, list_reports, show_report
 
 #funktion för att rensa skärmen
 def clear_screen():

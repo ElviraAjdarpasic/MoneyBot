@@ -6,5 +6,26 @@
     {
         "date": "2025-12-20 23:01",
         "summary": "==== ECONOMIC REPORT ====\nIncome: 6000\nExpenses: -6000\nBalance: 0\nPredicted next month: 0"
+    },
+    {
+        "date": "2025-12-20 23:07",
+        "summary": "==== ECONOMIC REPORT ====\nIncome: 3\nExpenses: -9\nBalance: -6\nPredicted next month: -8"
+    },
+    {
+        "date": "2025-12-20 23:10",
+        "summary": "==== ECONOMIC REPORT ====\nIncome: 2\nExpenses: -4\nBalance: -2\nPredicted next month: -3"
+    },
+    {
+        "date": "2025-12-21 00:06",
+        "summary": "==== ECONOMIC REPORT ====\nIncome: 2\nExpenses: -7\nBalance: -5\nPredicted next month: -7"
+    },
+    {
+        "date": "2025-12-21 00:36",
+        "summary": "==== ECONOMIC REPORT ====\nIncome: 1\nExpenses: -2\nBalance: -1\nPredicted next month: -2"
+    },
+    {
+        "name": "Elcira Ajdarpsic",
+        "date": "2025-12-21 01:22",
+        "summary": "==== ECONOMIC REPORT ====\nIncome: 6\nExpenses: -12\nBalance: -6\nPredicted next month: -8"
     }
 ]

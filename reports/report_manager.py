@@ -8,16 +8,15 @@ REPORT_FILE = "reports.json"
 def _load_reports():
     if not os.path.exists(REPORT_FILE):
         return []
-    
+
     try:
         with open(REPORT_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
-            #Säkerställ att det är en lista
+            
             if isinstance(data, list):
                 return data
-            else:
-                return []
-    except (json.JSONDecodeError, PermissionError):
+            return []
+    except:
         return []
         
 #Sparar listan med rapporter till filen
@@ -26,43 +25,49 @@ def _save_reports(reports):
         with open(REPORT_FILE, "w", encoding="utf-8") as f:
             json.dump(reports, f, indent=4, ensure_ascii=False)
     except PermissionError:
-        print("Kunde inte spara rapporten – behörighetsfel.")
- 
+            print(" " * 18 + "Could not save report – permission error.") 
+
 #Lägger till en ny rapport med dagens datum och tid
-def add_report(summary: str):
+def add_report(summary: str, user_name: str = "Unknown"):
     reports = _load_reports()
     
     new_report = {
+        "name": user_name.strip().title(),
         "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
         "summary": summary.strip()
-    }
-    
+        }
     reports.append(new_report)
     _save_reports(reports)
-    print(f"\nRapport sparad! (Totalt {len(reports)} rapporter)")
+    print(" " * 18 + "Report saved successfully! 🎀💕")
 
 #Visar en numrerad lista över alla sparade rapporter
-def list_reports() -> bool:
+def list_reports(current_user: str = None):
     reports = _load_reports()
-    
-    if not reports:
-        print("Inga tidigare rapporter finns ännu.")
+    if current_user:
+        user_reports = [r for r in reports if r.get("name", "Unknown").title() == current_user.title()]
+    else:
+        user_reports = reports
+
+    if not user_reports:
+        print(" " * 18 + "No reports saved for you yet! 🌸")
         return False
-    
-    print("\n=== TIDIGARE RAPPORTER ===")
-    for i, report in enumerate(reports, 1):
-        print(f"{i}. {report['date']}")
-    
-    print("==========================\n")
+
+    print("\n" + " " * 18 + "=== YOUR PREVIOUS REPORTS ===")
+    for i, report in enumerate(user_reports, 1):
+        print(f"{' ' * 18}{i}. {report['date']}")
+    print(" " * 18 + "==============================\n")
     return True
 
 #Visar en specifik rapport baserat på index (0-baserat)
-def show_report(index: int):
+def show_report(index: int, current_user: str = None):
     reports = _load_reports()
-    
+    if current_user:
+        user_reports = [r for r in reports if r.get("name", "Unknown").title() == current_user.title()]
+    else:
+        user_reports = reports
+
     try:
-        report = reports[index]
-        print(f"\nRapport från {report['date']}\n")
-        print(report['summary'])
+        report = user_reports[index]
+        print("\n" + " " * 18 + f"Report by: {report['name']} on {report['date']}")    
     except IndexError:
-        print("Ogiltigt rapportnummer – det finns inte!")
+        print(" " * 18 + "Invalid report number!")

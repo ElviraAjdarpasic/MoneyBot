@@ -62,6 +62,8 @@ def welcome_user():
     print(" " * 15 + "Now let's organize your finances together 💕")
     print("\n\n\n")
     input("   Press Enter to go to the menu...")
+    clear_screen()
+
     return full_name
 
 #Funktion som säkerhetställer att användaren matar in heltal
@@ -76,11 +78,12 @@ def safe_int_input(prompt: str) -> int:
 def run_moneybot_analysis()-> str:
     logger = setup_logger("MoneyBot")
     logger.info("Running new economic analysis")
-    
+    print("\n")
+
     #Frågar användaren om värden
-    income = safe_int_input("Monthly income: ")
-    rent = safe_int_input("Rent: ")
-    food = safe_int_input("Food costs: ")
+    income = safe_int_input(" " * 18 + "Monthly income: ")
+    rent = safe_int_input(" " * 18 + "Rent: ")
+    food = safe_int_input(" " * 18 + "Food costs: ")
 
     transactions = [income, -rent, -food]
     analysis = FinanceAnalysis(transactions)
@@ -118,6 +121,7 @@ def main_menu():
             add_report(summary, full_name)
             print("\n" + "\n".join(" " * 18 + line if line.strip() else "" for line in summary.split("\n")))
             input("\n" + " " * 18 + "Press Enter to continue...")
+            clear_screen()
 
         elif choice == "2":
             clear_screen()
@@ -126,6 +130,7 @@ def main_menu():
                     print(" " * 18 + "You haven't created any reports yet! 🌸")
                     print(" " * 18 + "Let's create your first one! 🎀")
                     input("\n" + " " * 18 + "Press Enter to go back to main menu...")
+                    clear_screen()
                     break
                 
                 print(" " * 18 + "1. View a report")
@@ -141,20 +146,32 @@ def main_menu():
                     try:
                         num = int(input(" " * 18 + "Select report number to view: ")) - 1
                         clear_screen()
-                        show_report(num, full_name)
+                        all_reports = _load_reports()
+                        user_reports = [r for r in all_reports if r.get("name", "Unknown").title() == full_name.title()]
+                        report = user_reports[num]
+                        print("\n")
+                        for line in report["summary"].split("\n"):
+                            if line.strip():
+                                print(" " * 18 + line)
+                            else:
+                                print()
+                        print("\n" + " " * 18 + f"Report by: {report['name']} on {report['date']}")
                         input("\n" + " " * 18 + "Press Enter to continue...")
+                        clear_screen()
                     except ValueError:
                         print(" " * 18 + "Invalid number! 😅")
                         input("\n" + " " * 18 + "Press Enter to continue...")
+                        clear_screen()
                     except IndexError:
                         print(" " * 18 + "Report number does not exist! 😅")
                         input("\n" + " " * 18 + "Press Enter to continue...")
+                        clear_screen()
 
                 elif sub_choice == "2":
                     clear_screen()
                     list_reports(full_name)
                     try:
-                        num = int(input(" " * 18 + "Select report number to delete: ")) - 1
+                        num = int(input(" " * 18 + "Select ONE report number to delete: ")) - 1
                         # Här hämtar vi alla rapporter och raderar den valda
                         all_reports = _load_reports()
                         user_reports = [r for r in all_reports if r.get("name", "Unknown").title() == full_name.title()]
@@ -169,7 +186,8 @@ def main_menu():
                             print(" " * 18 + "Invalid number!")
                     except ValueError:
                         print(" " * 18 + "Invalid input!")
-                    input("\n" + " " * 18 + "Press Enter to continue...")
+                        input("\n" + " " * 18 + "Press Enter to continue...")
+                        clear_screen()
 
                 elif sub_choice == "3":
                     break  # Går tillbaka till huvudmenyn
@@ -177,6 +195,7 @@ def main_menu():
                 else:
                     print(" " * 18 + "Invalid choice, try again! 😊")
                     input("\n" + " " * 18 + "Press Enter to continue...")
+                    clear_screen()
 
         elif choice == "3":
             clear_screen()
@@ -189,6 +208,7 @@ def main_menu():
         else:
             print(" " * 18 + "Invalid choice, please try again.")
             input("\n" + " " * 18 + "Press Enter to continue...")
+            clear_screen()
         
 
         #Rensa inför nästa varv i loopen

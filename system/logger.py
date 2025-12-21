@@ -14,7 +14,7 @@ def setup_logger(name: str):
     #Bestämmer VAR meddellandet ska visas
     handler = logging.StreamHandler()
     #Bestämmer HUR medleandet ska se ut
-    formatter = logging.Formatter("[%(name)s] %(levelname)s: %(message)s")
+    formatter = logging.Formatter(" " * 18 +"[%(name)s] %(levelname)s: %(message)s")
         
     handler.setFormatter(formatter)
 

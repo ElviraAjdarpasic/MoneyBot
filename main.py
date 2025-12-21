@@ -1,10 +1,9 @@
 import os
-from reports.report_manager import add_report, list_reports, show_report, _load_reports, _save_reports
 from finance.analysis import FinanceAnalysis
 from system.logger import setup_logger
 
 #Importera funktioner för att spara och visa rapporter
-from reports.report_manager import add_report, list_reports, show_report
+from reports.report_manager import add_report, list_reports, show_report, _load_reports, _save_reports
 
 #funktion för att rensa skärmen
 def clear_screen():
@@ -25,20 +24,38 @@ def welcome_user():
     print(" " * 15 + "in a simple and fun way! 🌸")
     print("\n\n")
 
+    # Förnamn
     while True:
         first_name = input("   What's your first name? ").strip().capitalize()
-        if first_name.isalpha() and len(first_name) > 2:
+        if first_name.isalpha() and len(first_name):
             break
-        print("   Oops! Please enter a real first name (letters only) 💕")
-    
+        else:
+            clear_screen()
+            print("\n\n")
+            print(" " * 15 + "Welcome to your personal MoneyBot! 💰💕")
+            print(" " * 10 + "I'm here to help you get full control of your finances")
+            print(" " * 15 + "in a simple and fun way! 🌸")
+            print("\n\n")
+            print("   Oops! Please enter a real first name (letters only) 💕")
+
+
+    #Efternamn
     while True:
         last_name = input("   And your last name? ").strip().capitalize()
-        if last_name.isalpha() and len(last_name) > 2:
-            break
-        print("   Oops! Please enter a real last name (letters only) 💕")
-    
+        if last_name.isalpha() and len(last_name):
+            break  
+        else:  
+            clear_screen()
+            print("\n\n")
+            print(" " * 15 + "Welcome to your personal MoneyBot! 💰💕")
+            print(" " * 10 + "I'm here to help you get full control of your finances")
+            print(" " * 15 + "in a simple and fun way! 🌸")
+            print("\n\n")
+            print(f"   First name: {first_name} ✓")
+            print("   Oops! Please enter a real last name (letters only) 💕")
+            
     full_name = f"{first_name} {last_name}"
-    
+        
     clear_screen()
     print("\n\n\n")
     print(" " * 20 + f"Hi {full_name}! So happy you're here! 🎀✨")
@@ -98,8 +115,8 @@ def main_menu():
         if choice == "1":
             clear_screen()
             summary = run_moneybot_analysis()
-            add_report(summary, full_name)           
-            print("\n" + summary)
+            add_report(summary, full_name)
+            print("\n" + "\n".join(" " * 18 + line if line.strip() else "" for line in summary.split("\n")))
             input("\n" + " " * 18 + "Press Enter to continue...")
 
         elif choice == "2":
@@ -110,17 +127,17 @@ def main_menu():
                     print(" " * 18 + "Let's create your first one! 🎀")
                     input("\n" + " " * 18 + "Press Enter to go back to main menu...")
                     break
-
+                
                 print(" " * 18 + "1. View a report")
                 print(" " * 18 + "2. Delete a report")
                 print(" " * 18 + "3. Back to main menu")
                 print(" " * 18 + "==================")
-
+                
                 sub_choice = input(" " * 18 + "Choose an option (1-3): ").strip()
-
+                
                 if sub_choice == "1":
                     clear_screen()
-                    list_reports(full_name)  # Visar listan igen
+                    list_reports(full_name)
                     try:
                         num = int(input(" " * 18 + "Select report number to view: ")) - 1
                         clear_screen()

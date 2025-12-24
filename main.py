@@ -38,7 +38,6 @@ def welcome_user():
             print("\n\n")
             print("   Oops! Please enter a real first name (letters only) 💕")
 
-
     #Efternamn
     while True:
         last_name = input("   And your last name? ").strip().capitalize()
@@ -55,7 +54,33 @@ def welcome_user():
             print("   Oops! Please enter a real last name (letters only) 💕")
             
     full_name = f"{first_name} {last_name}"
-        
+    
+    while True:
+        clear_screen()
+        print("\n\n")
+        print(" " * 15 + "Welcome to your personal MoneyBot! 💰💕")
+        print(" " * 10 + "I'm here to help you get full control of your finances")
+        print(" " * 15 + "in a simple and fun way! 🌸")
+        print("\n\n")
+        print(" " * 15 + f"Your name: {full_name}")
+        print(" " * 15 + "Is it correct(Answer Yes or No)?")
+        answer = input(" " * 15 + "> ").strip().lower()
+
+        if answer in ["yes", "y"]:
+            break
+        elif answer in ["no", "n"]:
+            clear_screen()
+            print("\n\n")
+            print(" " * 15 + "Okey, Lets start over.💕")
+            print("\n")
+
+            #Startar från början med att fråga om förnamn
+            return welcome_user()
+        else:
+            clear_screen()
+            print(" " * 15 + "Please answer yes or no!")
+            print("\n")
+            
     clear_screen()
     print("\n\n\n")
     print(" " * 20 + f"Hi {full_name}! So happy you're here! 🎀✨")
@@ -63,10 +88,10 @@ def welcome_user():
     print("\n\n\n")
     input("   Press Enter to go to the menu...")
     clear_screen()
-
+            
     return full_name
-
-#Funktion som säkerhetställer att användaren matar in heltal
+            
+#Funktion som säkerhetställer att användaren matar in heltal           
 def safe_int_input(prompt: str) -> int:
     while True:
         try:
@@ -102,10 +127,9 @@ def run_moneybot_analysis()-> str:
 def main_menu():
     full_name = welcome_user()
     clear_screen()
-
+    
     while True:
         print("\n" * 3)
-
         print(" " * 18 + "=== MoneyBot ===")
         print(" " * 18 + "1. Create new report")
         print(" " * 18 + "2. View previous reports")
@@ -114,7 +138,7 @@ def main_menu():
         print("\n" * 2)
 
         choice = input(" " * 18 + "Choose an option (1-3): ").strip()
-
+        
         if choice == "1":
             clear_screen()
             summary = run_moneybot_analysis()

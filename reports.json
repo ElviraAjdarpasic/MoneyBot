@@ -52,5 +52,30 @@
         "name": "El El",
         "date": "2025-12-21 20:51",
         "summary": "==== ECONOMIC REPORT ====\nIncome: 1\nExpenses: -5\nBalance: -4\nPredicted next month: -6"
+    },
+    {
+        "name": "Elvira Ajdarpasic",
+        "date": "2025-12-30 17:46",
+        "summary": "==== ECONOMIC REPORT ====\nIncome: 5000\nExpenses: -5400\nBalance: -400\nPredicted next month: -534"
+    },
+    {
+        "name": "Elvira Ajdarpasic",
+        "date": "2025-12-30 17:50",
+        "summary": "==== ECONOMIC REPORT ====\nIncome: 5000\nExpenses: -490\nBalance: 4510\nPredicted next month: 6013\n\n💬 MoneyBot's kommentar:\nNice! Du har pengar kvar den här månaden – bra jobbat! 🎉\nNästa månad ser ännu bättre ut om du fortsätter såhär! 🚀"
+    },
+    {
+        "name": "Elvira Ajdarpasic",
+        "date": "2025-12-30 17:56",
+        "summary": "==== ECONOMIC REPORT ====\nIncome: 3\nExpenses: -7\nBalance: -4\nPredicted next month: -6\n\n💬 MoneyBot's kommentar:\nAjdå... den här månaden gick back. Inget panik – det händer alla ibland! 😅\nOm du fortsätter såhär kommer det se tufft ut nästa månad också – sikta på att dra ner lite! Du klarar det!"
+    },
+    {
+        "name": "Elvira Ajdarpasic",
+        "date": "2025-12-30 18:02",
+        "summary": "==== ECONOMIC REPORT ====\nIncome: 8999\nExpenses: -99\nBalance: 8900\nPredicted next month: 11866"
+    },
+    {
+        "name": "Elvira Ajdarpasic",
+        "date": "2025-12-30 18:06",
+        "summary": "==== ECONOMIC REPORT ====\nIncome: 9000\nExpenses: -990\nBalance: 8010\nPredicted next month: 10680"
     }
 ]

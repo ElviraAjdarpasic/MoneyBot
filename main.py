@@ -103,6 +103,10 @@ def safe_int_input(prompt: str) -> int:
 def run_moneybot_analysis()-> str:
     logger = setup_logger("MoneyBot")
     logger.info("Running new economic analysis")
+    
+    print("\n")
+    print(" " * 18 + "=== MoneyBot - Monthly Budget ===")
+    print(" " * 18 + "Enter your approximate values below:")
     print("\n")
 
     #Frågar användaren om värden
@@ -121,6 +125,28 @@ def run_moneybot_analysis()-> str:
         f"Balance: {analysis.total_balance()}\n" 
         f"Predicted next month: {analysis.predicted_next_month()}\n"
     )
+    
+    #Kommentarer
+    balance = analysis.total_balance()
+    predicted = analysis.predicted_next_month()
+
+    if balance > 0:
+        logger.info("Nice! Du har pengar kvar den här månaden – bra jobbat! 🎉")
+        if predicted > balance:
+            logger.info("Nästa månad ser ännu bättre ut om du fortsätter såhär! 🚀")
+        elif predicted < balance:
+            logger.info("Nästa månad ser lite tuffare ut! sikta på att spara lite mer eller minska utgifter! 💪")
+        else:
+            logger.info("Nästa månad ser ut att bli ungefär som den här – stabilt! 🌟")
+    else:
+        logger.info("Ajdå... den här månaden gick back. Inget panik – det händer alla ibland! 😅")
+        if predicted > balance:
+            logger.info("Nästa månad kan bli bättre! håll koll på utgifterna så vänder det! 💕")
+        else:
+            logger.info("Om du fortsätter såhär kommer det se tufft ut nästa månad också – sikta på att dra ner lite! Du klarar det!")
+
+    logger.info("Report saved successfully! 🎀💕")
+
     return report
 
 #Huvudmenyn
@@ -210,11 +236,12 @@ def main_menu():
                             print(" " * 18 + "Invalid number!")
                     except ValueError:
                         print(" " * 18 + "Invalid input!")
-                        input("\n" + " " * 18 + "Press Enter to continue...")
-                        clear_screen()
+                    input("\n" + " " * 18 + "Press Enter to continue...")
+                    clear_screen()
+                    break
 
                 elif sub_choice == "3":
-                    break  # Går tillbaka till huvudmenyn
+                    break
 
                 else:
                     print(" " * 18 + "Invalid choice, try again! 😊")

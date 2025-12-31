@@ -1,6 +1,8 @@
 import os
 from finance.analysis import FinanceAnalysis
 from system.logger import setup_logger
+from colorama import init, Fore, Style
+init(autoreset=True)
 
 #Importera funktioner för att spara och visa rapporter
 from reports.report_manager import add_report, list_reports, show_report, _load_reports, _save_reports
@@ -103,11 +105,6 @@ def safe_int_input(prompt: str) -> int:
 def run_moneybot_analysis()-> str:
     logger = setup_logger("MoneyBot")
     logger.info("Running new economic analysis")
-    
-    print("\n")
-    print(" " * 18 + "=== MoneyBot - Monthly Budget ===")
-    print(" " * 18 + "Enter your approximate values below:")
-    print("\n")
 
     #Frågar användaren om värden
     income = safe_int_input(" " * 18 + "Monthly income: ")
@@ -119,35 +116,53 @@ def run_moneybot_analysis()-> str:
 
     #Skapar en fin raport
     report = (
-        "==== ECONOMIC REPORT ====\n" 
+        Fore.CYAN + "==== ECONOMIC REPORT ====" + Style.RESET_ALL + "\n" 
         f"Income: {analysis.total_income()}\n" 
         f"Expenses: {analysis.total_expenses()}\n" 
         f"Balance: {analysis.total_balance()}\n" 
         f"Predicted next month: {analysis.predicted_next_month()}\n"
     )
     
+
     #Kommentarer
     balance = analysis.total_balance()
     predicted = analysis.predicted_next_month()
 
+    comments = []
+
     if balance > 0:
-        logger.info("Nice! Du har pengar kvar den här månaden – bra jobbat! 🎉")
+        msg = "Nice! You've got money left this month! great job! 🎉"
+        logger.info(msg)
+        comments.append(msg)
+
         if predicted > balance:
-            logger.info("Nästa månad ser ännu bättre ut om du fortsätter såhär! 🚀")
+            msg = "Next month looks even better if you keep this up! 🚀"
+            logger.info(msg)
+            comments.append(msg)
         elif predicted < balance:
-            logger.info("Nästa månad ser lite tuffare ut! sikta på att spara lite mer eller minska utgifter! 💪")
+            msg = "Next month might be a bit tighter... aim to save more or cut a little spending! 💪"
+            logger.info(msg)
+            comments.append(msg)
         else:
-            logger.info("Nästa månad ser ut att bli ungefär som den här – stabilt! 🌟")
+            msg = "Next month looks about the same as this one! steady and solid! 🌟"
+            logger.info(msg)
+            comments.append(msg)
     else:
-        logger.info("Ajdå... den här månaden gick back. Inget panik – det händer alla ibland! 😅")
+        msg = "Uh oh... this month ended in the red. No panic... it happens to everyone sometimes! 😅"
+        logger.info(msg)
+        comments.append(msg)
+
         if predicted > balance:
-            logger.info("Nästa månad kan bli bättre! håll koll på utgifterna så vänder det! 💕")
+            msg = "Next month could turn around! keep an eye on spending and it'll flip! 💕"
+            logger.info(msg)
+            comments.append(msg)
         else:
-            logger.info("Om du fortsätter såhär kommer det se tufft ut nästa månad också – sikta på att dra ner lite! Du klarar det!")
+            msg = "If you keep going like this, next month will be tough too, try cutting back a bit! You've got this!"
+            logger.info(msg)
+            comments.append(msg)
 
-    logger.info("Report saved successfully! 🎀💕")
+    return report, comments
 
-    return report
 
 #Huvudmenyn
 def main_menu():
@@ -156,20 +171,25 @@ def main_menu():
     
     while True:
         print("\n" * 3)
-        print(" " * 18 + "=== MoneyBot ===")
+        print(" " * 18 + Fore.MAGENTA + Style.BRIGHT + "=== MoneyBot ===" + Style.RESET_ALL)        
         print(" " * 18 + "1. Create new report")
         print(" " * 18 + "2. View previous reports")
         print(" " * 18 + "3. Exit")
         print(" " * 18 + "==================")
-        print("\n" * 2)
+        print("\n")
 
         choice = input(" " * 18 + "Choose an option (1-3): ").strip()
         
         if choice == "1":
             clear_screen()
-            summary = run_moneybot_analysis()
-            add_report(summary, full_name)
-            print("\n" + "\n".join(" " * 18 + line if line.strip() else "" for line in summary.split("\n")))
+            report, comments = run_moneybot_analysis()
+            add_report(report, full_name)
+
+            print("\n" + " " * 18 + "Report saved successfully! 🎀💕")  # först success
+            print("\n" + report)  # rapporten
+            print("\nComments:")  # kommentarer längst ner
+            for line in comments:
+                print(f"- {line}")  # varje kommentar på egen rad
             input("\n" + " " * 18 + "Press Enter to continue...")
             clear_screen()
 
@@ -231,7 +251,7 @@ def main_menu():
                             all_reports.remove(deleted_report)
                             _save_reports(all_reports)
                             clear_screen()
-                            print(" " * 18 + "Report deleted successfully! 🗑️✨")
+                            print(" " * 18 + Fore.GREEN + "Report deleted successfully! 🗑️✨" + Style.RESET_ALL)                        
                         else:
                             print(" " * 18 + "Invalid number!")
                     except ValueError:

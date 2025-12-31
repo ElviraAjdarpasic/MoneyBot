@@ -1,9 +1,10 @@
+from config import REPORT_FILE
 import json
 import os
 from datetime import datetime
+from colorama import Fore, Style, init
 
-#Filen där rapporterna sparas
-REPORT_FILE = "reports.json"
+init(autoreset=True)
 
 def _load_reports():
     if not os.path.exists(REPORT_FILE):
@@ -25,7 +26,7 @@ def _save_reports(reports):
         with open(REPORT_FILE, "w", encoding="utf-8") as f:
             json.dump(reports, f, indent=4, ensure_ascii=False)
     except PermissionError:
-            print(" " * 18 + "Could not save report – permission error.") 
+            print(" " * 18 + "Could not save report, permission error.") 
 
 #Lägger till en ny rapport med dagens datum och tid
 def add_report(summary: str, user_name: str = "Unknown"):
@@ -54,7 +55,7 @@ def list_reports(current_user: str = None):
         print(" " * 18 + "No reports saved for you yet! 🌸")
         return False
 
-    print("\n" + " " * 18 + "=== YOUR PREVIOUS REPORTS ===")
+    print("\n" + " " * 18 + Fore.CYAN + "=== YOUR PREVIOUS REPORTS ===" + Style.RESET_ALL)
     for i, report in enumerate(user_reports, 1):
         print(f"{' ' * 18}{i}. {report['date']}")
     print(" " * 18 + "==============================\n")

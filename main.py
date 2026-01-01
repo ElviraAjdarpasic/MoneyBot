@@ -102,68 +102,55 @@ def safe_int_input(prompt: str) -> int:
             print("Oops! Please enter a valid number 💕!")
 
 #Start funktionen för själva MoneyBot
-def run_moneybot_analysis()-> str:
+def run_moneybot_analysis():
     logger = setup_logger("MoneyBot")
     logger.info("Running new economic analysis")
 
-    #Frågar användaren om värden
+    print("\n" * 2)
+    print(" " * 18 + Fore.MAGENTA + "=== MoneyBot - Monthly Budget ===" + Style.RESET_ALL)
+    print(" " * 18 + "Enter your approximate values below:\n")
+
     income = safe_int_input(" " * 18 + "Monthly income: ")
     rent = safe_int_input(" " * 18 + "Rent: ")
     food = safe_int_input(" " * 18 + "Food costs: ")
 
-    transactions = [income, -rent, -food]
-    analysis = FinanceAnalysis(transactions)
+    analysis = FinanceAnalysis([income, -rent, -food])
 
-    #Skapar en fin raport
     report = (
-        Fore.CYAN + "==== ECONOMIC REPORT ====" + Style.RESET_ALL + "\n" 
-        f"Income: {analysis.total_income()}\n" 
-        f"Expenses: {analysis.total_expenses()}\n" 
-        f"Balance: {analysis.total_balance()}\n" 
+        Fore.CYAN + "==== ECONOMIC REPORT ====" + Style.RESET_ALL + "\n"
+        f"Income: {analysis.total_income()}\n"
+        f"Expenses: {analysis.total_expenses()}\n"
+        f"Balance: {analysis.total_balance()}\n"
         f"Predicted next month: {analysis.predicted_next_month()}\n"
     )
-    
-
-    #Kommentarer
-    balance = analysis.total_balance()
-    predicted = analysis.predicted_next_month()
 
     comments = []
 
+    balance = analysis.total_balance()
+    predicted = analysis.predicted_next_month()
+
     if balance > 0:
-        msg = "Nice! You've got money left this month! great job! 🎉"
-        logger.info(msg)
-        comments.append(msg)
+        comments.append("Nice! You've got money left this month! Great job! 🎉")
 
         if predicted > balance:
-            msg = "Next month looks even better if you keep this up! 🚀"
-            logger.info(msg)
-            comments.append(msg)
+            comments.append("Next month looks even better if you keep this up! 🚀")
         elif predicted < balance:
-            msg = "Next month might be a bit tighter... aim to save more or cut a little spending! 💪"
-            logger.info(msg)
-            comments.append(msg)
+            comments.append("Next month might be a bit tighter... aim to save more or cut spending! 💪")
         else:
-            msg = "Next month looks about the same as this one! steady and solid! 🌟"
-            logger.info(msg)
-            comments.append(msg)
+            comments.append("Next month looks about the same as this one! Steady! 🌟")
     else:
-        msg = "Uh oh... this month ended in the red. No panic... it happens to everyone sometimes! 😅"
-        logger.info(msg)
-        comments.append(msg)
+        comments.append("Uh oh... this month ended in the red. No panic... it happens! 😅")
 
         if predicted > balance:
-            msg = "Next month could turn around! keep an eye on spending and it'll flip! 💕"
-            logger.info(msg)
-            comments.append(msg)
+            comments.append("Next month could turn around! Keep an eye on spending! 💕")
         else:
-            msg = "If you keep going like this, next month will be tough too, try cutting back a bit! You've got this!"
-            logger.info(msg)
-            comments.append(msg)
+            comments.append(
+                "If you keep going like this, next month will be tough too... "
+                "try cutting back! You've got this!"
+            )
 
     return report, comments
-
-
+    
 #Huvudmenyn
 def main_menu():
     full_name = welcome_user()
@@ -185,11 +172,18 @@ def main_menu():
             report, comments = run_moneybot_analysis()
             add_report(report, full_name)
 
-            print("\n" + " " * 18 + "Report saved successfully! 🎀💕")  # först success
-            print("\n" + report)  # rapporten
-            print("\nComments:")  # kommentarer längst ner
-            for line in comments:
-                print(f"- {line}")  # varje kommentar på egen rad
+            print("\n")
+            print(" " * 18 + Fore.GREEN + "Report saved successfully! 🎀💕" + Style.RESET_ALL)
+            print("\n")
+
+            for line in report.split("\n"):
+                print(" " * 18 + line)
+            
+
+            print()
+            for c in comments:
+                print(" " * 18 + f"[MoneyBot] INFO: {c}")
+
             input("\n" + " " * 18 + "Press Enter to continue...")
             clear_screen()
 

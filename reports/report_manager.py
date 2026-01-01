@@ -39,9 +39,7 @@ def add_report(summary: str, user_name: str = "Unknown"):
         }
     reports.append(new_report)
     _save_reports(reports)
-    print("\n\n")
-    print(" " * 18 + "Report saved successfully! 🎀💕")
-    print("\n") 
+
 
 #Visar en numrerad lista över alla sparade rapporter
 def list_reports(current_user: str = None):

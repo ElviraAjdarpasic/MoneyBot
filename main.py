@@ -88,7 +88,7 @@ def welcome_user():
     print(" " * 20 + f"Hi {full_name}! So happy you're here! 🎀✨")
     print(" " * 15 + "Now let's organize your finances together 💕")
     print("\n\n\n")
-    input("   Press Enter to go to the menu...")
+    input(Fore.BLUE + " " * 18 +"Press Enter to go to the menu..."+ Style.RESET_ALL)
     clear_screen()
             
     return full_name
@@ -99,7 +99,7 @@ def safe_float_input(prompt: str) -> float:
         try:
             return float(input(prompt))
         except ValueError:
-            print("Oops! Please enter a valid number 💕!")
+            print(Fore.RED + "Oops! Please enter a valid number (you can use decimals) 💕!" + Style.RESET_ALL)
 
 #Start funktionen för själva MoneyBot
 def run_moneybot_analysis():
@@ -184,7 +184,7 @@ def main_menu():
             for c in comments:
                 print(" " * 18 + f"[MoneyBot] INFO: {c}")
 
-            input("\n" + " " * 18 + "Press Enter to continue...")
+            input(Fore.BLUE + " " * 18 + "Press Enter to continue..."+ Style.RESET_ALL)
             clear_screen()
 
         elif choice == "2":
@@ -193,7 +193,7 @@ def main_menu():
                 if not list_reports(full_name):
                     print(" " * 18 + "You haven't created any reports yet! 🌸")
                     print(" " * 18 + "Let's create your first one! 🎀")
-                    input("\n" + " " * 18 + "Press Enter to go back to main menu...")
+                    input(Fore.BLUE + " " * 18 + "Press Enter to go back to main menu..."+ Style.RESET_ALL)
                     clear_screen()
                     break
                 
@@ -220,15 +220,15 @@ def main_menu():
                             else:
                                 print()
                         print("\n" + " " * 18 + f"Report by: {report['name']} on {report['date']}")
-                        input("\n" + " " * 18 + "Press Enter to continue...")
+                        input(Fore.BLUE +"Press Enter to continue..."+ Style.RESET_ALL)
                         clear_screen()
                     except ValueError:
                         print(" " * 18 + "Invalid number! 😅")
-                        input("\n" + " " * 18 + "Press Enter to continue...")
+                        input(Fore.BLUE +"Press Enter to continue..." + Style.RESET_ALL)
                         clear_screen()
                     except IndexError:
                         print(" " * 18 + "Report number does not exist! 😅")
-                        input("\n" + " " * 18 + "Press Enter to continue...")
+                        input(Fore.BLUE +"Press Enter to continue..." + Style.RESET_ALL)
                         clear_screen()
 
                 elif sub_choice == "2":
@@ -238,7 +238,7 @@ def main_menu():
                     
                     if not user_reports:
                         print(" " * 18 + "You haven't created any reports yet! 🌸")
-                        input("\n" + " " * 18 + "Press Enter to continue...")
+                        input(Fore.BLUE +"Press Enter to continue..."+ Style.RESET_ALL)
                         clear_screen()
                         continue
 
@@ -254,17 +254,17 @@ def main_menu():
                                 _save_reports(all_reports)
                                 clear_screen()
                                 print(" " * 18 + Fore.GREEN + "Report deleted successfully! 🗑️✨" + Style.RESET_ALL)
-                                input("\n" + " " * 18 + "Press Enter to continue...")
+                                input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
                                 clear_screen()
                                 break  
                             else:
                                 print(Fore.RED + "Invalid number! Please choose an existing report number." + Style.RESET_ALL)
-                                input(" " * 18 + "Press Enter to try again...")
+                                input(Fore.BLUE + " " * 18 + "Press Enter to try again..." + Style.RESET_ALL)
                                 clear_screen() 
 
                         except ValueError:
                             print(Fore.RED + "Invalid input! Please enter a number." + Style.RESET_ALL)
-                            input(" " * 18 + "Press Enter to try again...")
+                            input(Fore.BLUE + " " * 18 + "Press Enter to try again..." + Style.RESET_ALL)
                             clear_screen()
 
         elif choice == "3":
@@ -277,7 +277,7 @@ def main_menu():
 
         else:
             print(" " * 18 + "Invalid choice, please try again.")
-            input("\n" + " " * 18 + "Press Enter to continue...")
+            input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
             clear_screen()
         
 

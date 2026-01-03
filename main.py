@@ -94,10 +94,10 @@ def welcome_user():
     return full_name
             
 #Funktion som säkerhetställer att användaren matar in heltal           
-def safe_int_input(prompt: str) -> int:
+def safe_float_input(prompt: str) -> float:
     while True:
         try:
-            return int(input(prompt))
+            return float(input(prompt))
         except ValueError:
             print("Oops! Please enter a valid number 💕!")
 
@@ -110,18 +110,18 @@ def run_moneybot_analysis():
     print(" " * 18 + Fore.MAGENTA + "=== MoneyBot - Monthly Budget ===" + Style.RESET_ALL)
     print(" " * 18 + "Enter your approximate values below:\n")
 
-    income = safe_int_input(" " * 18 + "Monthly income: ")
-    rent = safe_int_input(" " * 18 + "Rent: ")
-    food = safe_int_input(" " * 18 + "Food costs: ")
+    income = safe_float_input(" " * 18 + "Monthly income: ")
+    rent = safe_float_input(" " * 18 + "Rent: ")
+    food = safe_float_input(" " * 18 + "Food costs: ")
 
     analysis = FinanceAnalysis([income, -rent, -food])
 
     report = (
         Fore.CYAN + "==== ECONOMIC REPORT ====" + Style.RESET_ALL + "\n"
-        f"Income: {analysis.total_income()}\n"
-        f"Expenses: {analysis.total_expenses()}\n"
-        f"Balance: {analysis.total_balance()}\n"
-        f"Predicted next month: {analysis.predicted_next_month()}\n"
+        f"Income: {analysis.total_income():.2f}\n"
+        f"Expenses: {analysis.total_expenses():.2f}\n"
+        f"Balance: {analysis.total_balance():.2f}\n"
+        f"Predicted next month: {analysis.predicted_next_month():.2f}\n"
     )
 
     comments = []

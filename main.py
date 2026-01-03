@@ -38,8 +38,7 @@ def welcome_user():
             print(" " * 10 + "I'm here to help you get full control of your finances")
             print(" " * 15 + "in a simple and fun way! 🌸")
             print("\n\n")
-            print("   Oops! Please enter a real first name (letters only) 💕")
-
+            print(Fore.RED + " " * 18 + "   Oops! Please enter a real first name (letters only) 💕"+ Style.RESET_ALL)
     #Efternamn
     while True:
         last_name = input("   And your last name? ").strip().capitalize()
@@ -53,7 +52,7 @@ def welcome_user():
             print(" " * 15 + "in a simple and fun way! 🌸")
             print("\n\n")
             print(f"   First name: {first_name} ✓")
-            print("   Oops! Please enter a real last name (letters only) 💕")
+            print(Fore.RED + " " * 18 +"   Oops! Please enter a real last name (letters only) 💕"+ Style.RESET_ALL)
             
     full_name = f"{first_name} {last_name}"
     
@@ -99,7 +98,7 @@ def safe_float_input(prompt: str) -> float:
         try:
             return float(input(prompt))
         except ValueError:
-            print(Fore.RED + "Oops! Please enter a valid number (you can use decimals) 💕!" + Style.RESET_ALL)
+            print(Fore.RED + " " * 18 + "Oops! Please enter a valid number (you can use decimals) 💕!" + Style.RESET_ALL)
 
 #Start funktionen för själva MoneyBot
 def run_moneybot_analysis():
@@ -160,7 +159,7 @@ def main_menu():
         print("\n" * 3)
         print(" " * 18 + Fore.MAGENTA + Style.BRIGHT + "=== MoneyBot ===" + Style.RESET_ALL)        
         print(" " * 18 + "1. Create new report")
-        print(" " * 18 + "2. View previous reports")
+        print(" " * 18 + "2. View or Delite previous reports")
         print(" " * 18 + "3. Exit")
         print(" " * 18 + "==================")
         print("\n")
@@ -189,6 +188,8 @@ def main_menu():
         elif choice == "2":
             clear_screen()
             while True:
+                print("\n" * 3)
+                print(" " * 18 + Fore.CYAN + "==== MENY ====" + Style.RESET_ALL + "\n")
                 print(" " * 18 + "1. View a report")
                 print(" " * 18 + "2. Delete a report")
                 print(" " * 18 + "3. Back to main menu")
@@ -262,7 +263,7 @@ def main_menu():
                     break 
 
                 else:
-                    print(" " * 18 + "Invalid choice, please try again.")
+                    print(Fore.RED + " " * 18 + "Invalid choice, please try again." + Style.RESET_ALL)
                     input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
                     clear_screen()
 
@@ -275,7 +276,7 @@ def main_menu():
             break
 
         else:
-            print(" " * 18 + "Invalid choice, please try again.")
+            print(Fore.RED + " " * 18 + "Invalid choice, please try again." + Style.RESET_ALL)
             input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
             clear_screen()
 

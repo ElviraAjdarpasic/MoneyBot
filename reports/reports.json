@@ -1,10 +1,5 @@
 [
     {
-        "name": "Elvira Ajdarpasic",
-        "date": "2025-12-31 00:46",
-        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 10000\nExpenses: -8000\nBalance: 2000\nPredicted next month: 2666"
-    },
-    {
         "name": "Sl Sl",
         "date": "2025-12-31 00:48",
         "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 899999\nExpenses: -9088\nBalance: 890911\nPredicted next month: 1187881"
@@ -13,21 +8,6 @@
         "name": "D Kl",
         "date": "2025-12-31 00:52",
         "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 8999999\nExpenses: -89999\nBalance: 8910000\nPredicted next month: 11880000"
-    },
-    {
-        "name": "Elvira Ajdarpasic",
-        "date": "2026-01-01 18:08",
-        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 90000\nExpenses: -1800\nBalance: 88200\nPredicted next month: 117600"
-    },
-    {
-        "name": "Elvira Ajdarpasic",
-        "date": "2026-01-01 18:46",
-        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 100000\nExpenses: -1100\nBalance: 98900\nPredicted next month: 131866"
-    },
-    {
-        "name": "Elvira Ajdarpasic",
-        "date": "2026-01-01 18:52",
-        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 1000000\nExpenses: -11000\nBalance: 989000\nPredicted next month: 1318666"
     },
     {
         "name": "Elvira Ajdarpasic",
@@ -73,5 +53,10 @@
         "name": "E E",
         "date": "2026-01-01 19:43",
         "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 55555\nExpenses: -610\nBalance: 54945\nPredicted next month: 73260"
+    },
+    {
+        "name": "Elvira Ajdarpasic",
+        "date": "2026-01-01 21:35",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 9\nExpenses: -9\nBalance: 0\nPredicted next month: 0"
     }
 ]

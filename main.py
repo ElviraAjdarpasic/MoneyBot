@@ -219,11 +219,11 @@ def main_menu():
                             else:
                                 print()
                         print("\n" + " " * 18 + f"Report by: {report['name']} on {report['date']}")
-                        input(Fore.BLUE + "Press Enter to continue..." + Style.RESET_ALL)
+                        input(Fore.BLUE + " " * 18 +"Press Enter to continue..." + Style.RESET_ALL)
                         clear_screen()
                     except (ValueError, IndexError):
                         print(Fore.RED + "Invalid report number! Please try again. 😅" + Style.RESET_ALL)
-                        input(Fore.BLUE + "Press Enter to continue..." + Style.RESET_ALL)
+                        input(Fore.BLUE + " " * 18 +"Press Enter to continue..." + Style.RESET_ALL)
                         clear_screen()
 
                 elif sub_choice == "2":
@@ -233,7 +233,7 @@ def main_menu():
                     
                     if not user_reports:
                         print(" " * 18 + "You haven't created any reports yet! 🌸")
-                        input(Fore.BLUE + "Press Enter to continue..." + Style.RESET_ALL)
+                        input(Fore.BLUE + " " * 18 +"Press Enter to continue..." + Style.RESET_ALL)
                         clear_screen()
                         continue
 
@@ -246,15 +246,15 @@ def main_menu():
                             _save_reports(all_reports)
                             clear_screen()
                             print(" " * 18 + Fore.GREEN + "Report deleted successfully! 🗑️✨" + Style.RESET_ALL)
-                            input(Fore.BLUE + "Press Enter to continue..." + Style.RESET_ALL)
+                            input(Fore.BLUE + " " * 18 +"Press Enter to continue..." + Style.RESET_ALL)
                             clear_screen()
                         else:
                             print(Fore.RED + "Invalid number! Please choose an existing report number." + Style.RESET_ALL)
-                            input(Fore.BLUE + "Press Enter to try again..." + Style.RESET_ALL)
+                            input(Fore.BLUE +" " * 18 + "Press Enter to try again..." + Style.RESET_ALL)
                             clear_screen()
                     except ValueError:
                         print(Fore.RED + "Invalid input! Please enter a number." + Style.RESET_ALL)
-                        input(Fore.BLUE + "Press Enter to try again..." + Style.RESET_ALL)
+                        input(Fore.BLUE +" " * 18 + "Press Enter to try again..." + Style.RESET_ALL)
                         clear_screen()
 
                 elif sub_choice == "3":
@@ -263,7 +263,7 @@ def main_menu():
 
                 else:
                     print(" " * 18 + "Invalid choice, please try again.")
-                    input(Fore.BLUE + "Press Enter to continue..." + Style.RESET_ALL)
+                    input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
                     clear_screen()
 
         elif choice == "3":

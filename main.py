@@ -233,34 +233,39 @@ def main_menu():
 
                 elif sub_choice == "2":
                     clear_screen()
-                    list_reports(full_name)
-                    try:
-                        num = int(input(" " * 18 + "Select ONE report number to delete: ")) - 1
-                        # Här hämtar vi alla rapporter och raderar den valda
-                        all_reports = _load_reports()
-                        user_reports = [r for r in all_reports if r.get("name", "Unknown").title() == full_name.title()]
-                        if 0 <= num < len(user_reports):
-                            # Hitta index i hela listan och ta bort
-                            deleted_report = user_reports[num]
-                            all_reports.remove(deleted_report)
-                            _save_reports(all_reports)
+                    all_reports = _load_reports()
+                    user_reports = [r for r in all_reports if r.get("name", "Unknown").title() == full_name.title()]
+                    
+                    if not user_reports:
+                        print(" " * 18 + "You haven't created any reports yet! 🌸")
+                        input("\n" + " " * 18 + "Press Enter to continue...")
+                        clear_screen()
+                        continue
+
+                    while True:
+                        list_reports(full_name)
+
+                        try:
+                            num = int(input(" " * 18 + "Select ONE report number to delete: ")) - 1
+
+                            if 0 <= num < len(user_reports):
+                                deleted_report = user_reports[num]
+                                all_reports.remove(deleted_report)
+                                _save_reports(all_reports)
+                                clear_screen()
+                                print(" " * 18 + Fore.GREEN + "Report deleted successfully! 🗑️✨" + Style.RESET_ALL)
+                                input("\n" + " " * 18 + "Press Enter to continue...")
+                                clear_screen()
+                                break  
+                            else:
+                                print(Fore.RED + "Invalid number! Please choose an existing report number." + Style.RESET_ALL)
+                                input(" " * 18 + "Press Enter to try again...")
+                                clear_screen() 
+
+                        except ValueError:
+                            print(Fore.RED + "Invalid input! Please enter a number." + Style.RESET_ALL)
+                            input(" " * 18 + "Press Enter to try again...")
                             clear_screen()
-                            print(" " * 18 + Fore.GREEN + "Report deleted successfully! 🗑️✨" + Style.RESET_ALL)                        
-                        else:
-                            print(" " * 18 + "Invalid number!")
-                    except ValueError:
-                        print(" " * 18 + "Invalid input!")
-                    input("\n" + " " * 18 + "Press Enter to continue...")
-                    clear_screen()
-                    break
-
-                elif sub_choice == "3":
-                    break
-
-                else:
-                    print(" " * 18 + "Invalid choice, try again! 😊")
-                    input("\n" + " " * 18 + "Press Enter to continue...")
-                    clear_screen()
 
         elif choice == "3":
             clear_screen()

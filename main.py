@@ -24,11 +24,17 @@ def welcome_user():
     print(" " * 15 + "Welcome to your personal MoneyBot! 💰💕")
     print(" " * 10 + "I'm here to help you get full control of your finances")
     print(" " * 15 + "in a simple and fun way! 🌸")
+    print("\n")
+    print(" " * 15 + "✨ Prediction: Keep an eye on your spending!")
+    print(" " * 6 + "This shows how much money could stay in your pocket next month")
+    print(" " * 15 +"if you keep things similar! 🌸")
     print("\n\n")
+    print("✨ Who’s using MoneyBot today?")
+    print("\n")
 
     # Förnamn
     while True:
-        first_name = input("   What's your first name? ").strip().capitalize()
+        first_name = input("What's your first name? ").strip().capitalize()
         if first_name.isalpha() and len(first_name):
             break
         else:
@@ -37,11 +43,17 @@ def welcome_user():
             print(" " * 15 + "Welcome to your personal MoneyBot! 💰💕")
             print(" " * 10 + "I'm here to help you get full control of your finances")
             print(" " * 15 + "in a simple and fun way! 🌸")
+            print("\n")
+            print(" " * 15 + "✨ Prediction: Keep an eye on your spending!")
+            print(" " * 6 + "This shows how much money could stay in your pocket next month")
+            print(" " * 15 +"if you keep things similar!")
             print("\n\n")
-            print(Fore.RED + " " * 18 + "   Oops! Please enter a real first name (letters only) 💕"+ Style.RESET_ALL)
+            print("✨ Who’s using MoneyBot today?")
+            print("\n")            
+            print("Oops! Please enter a real first name (letters only) 💕")
     #Efternamn
     while True:
-        last_name = input("   And your last name? ").strip().capitalize()
+        last_name = input("And your last name? ").strip().capitalize()
         if last_name.isalpha() and len(last_name):
             break  
         else:  
@@ -50,9 +62,15 @@ def welcome_user():
             print(" " * 15 + "Welcome to your personal MoneyBot! 💰💕")
             print(" " * 10 + "I'm here to help you get full control of your finances")
             print(" " * 15 + "in a simple and fun way! 🌸")
+            print("\n")
+            print(" " * 15 + "✨ Prediction: Keep an eye on your spending!")
+            print(" " * 6 + "This shows how much money could stay in your pocket next month")
+            print(" " * 15 +"if you keep things similar!")
             print("\n\n")
-            print(f"   First name: {first_name} ✓")
-            print(Fore.RED + " " * 18 +"   Oops! Please enter a real last name (letters only) 💕"+ Style.RESET_ALL)
+            print("✨ Who’s using MoneyBot today?")
+            print("\n")
+            print(f"First name: {first_name} ✓")
+            print(Fore.RED +"Oops! Please enter a real last name (letters only) 💕"+ Style.RESET_ALL)
             
     full_name = f"{first_name} {last_name}"
     
@@ -62,10 +80,18 @@ def welcome_user():
         print(" " * 15 + "Welcome to your personal MoneyBot! 💰💕")
         print(" " * 10 + "I'm here to help you get full control of your finances")
         print(" " * 15 + "in a simple and fun way! 🌸")
+        print("\n")
+        print(" " * 15 + "✨ Prediction: Keep an eye on your spending!")
+        print(" " * 6 + "This shows how much money could stay in your pocket next month")
+        print(" " * 15 +"if you keep things similar!")
         print("\n\n")
-        print(" " * 15 + f"Your name: {full_name}")
-        print(" " * 15 + "Is it correct(Answer Yes or No)?")
-        answer = input(" " * 15 + "> ").strip().lower()
+        print("Who’s using MoneyBot today?")
+        print("\n")
+        print(f"Your name: {first_name}")
+        print(f"Your lastname: {last_name}")
+        print("\n")
+        print("Is it correct(Answer Yes or No)?")
+        answer = input( "> ").strip().lower()
 
         if answer in ["yes", "y"]:
             break
@@ -84,8 +110,10 @@ def welcome_user():
             
     clear_screen()
     print("\n\n\n")
-    print(" " * 20 + f"Hi {full_name}! So happy you're here! 🎀✨")
-    print(" " * 15 + "Now let's organize your finances together 💕")
+    print(" " * 20 + f"Hi {full_name}!") 
+    print("\n")
+    print(" " * 20 +"So happy you're here! 🎀✨")
+    print(" " * 14 + "Now let's organize your finances together 💕")
     print("\n\n\n")
     input(Fore.BLUE + " " * 18 +"Press Enter to go to the menu..."+ Style.RESET_ALL)
     clear_screen()
@@ -105,7 +133,7 @@ def run_moneybot_analysis():
     logger = setup_logger("MoneyBot")
     logger.info("Running new economic analysis")
 
-    print("\n" * 2)
+    print("\n")
     print(" " * 18 + Fore.MAGENTA + "=== MoneyBot - Monthly Budget ===" + Style.RESET_ALL)
     print(" " * 18 + "Enter your approximate values below:\n")
 
@@ -116,12 +144,13 @@ def run_moneybot_analysis():
     analysis = FinanceAnalysis([income, -rent, -food])
 
     report = (
+         "\n" * 3 +
         Fore.CYAN + "==== ECONOMIC REPORT ====" + Style.RESET_ALL + "\n"
         f"Income: {analysis.total_income():.2f}\n"
         f"Expenses: {analysis.total_expenses():.2f}\n"
         f"Balance: {analysis.total_balance():.2f}\n"
-        f"Predicted next month: {analysis.predicted_next_month():.2f}\n"
-    )
+        f"Estimated money left for next month: {analysis.predicted_next_month():.2f}\n"    
+        )
 
     comments = []
 
@@ -156,10 +185,11 @@ def main_menu():
     clear_screen()
     
     while True:
+        clear_screen()
         print("\n" * 3)
         print(" " * 18 + Fore.MAGENTA + Style.BRIGHT + "=== MoneyBot ===" + Style.RESET_ALL)        
         print(" " * 18 + "1. Create new report")
-        print(" " * 18 + "2. View or Delite previous reports")
+        print(" " * 18 + "2. View or Delete previous reports")
         print(" " * 18 + "3. Exit")
         print(" " * 18 + "==================")
         print("\n")
@@ -181,7 +211,8 @@ def main_menu():
             print()
             for c in comments:
                 print(" " * 18 + f"[MoneyBot] INFO: {c}")
-
+            
+            print("\n")
             input(Fore.BLUE + " " * 18 + "Press Enter to continue..."+ Style.RESET_ALL)
             clear_screen()
 
@@ -189,7 +220,7 @@ def main_menu():
             clear_screen()
             while True:
                 print("\n" * 3)
-                print(" " * 18 + Fore.CYAN + "==== MENY ====" + Style.RESET_ALL + "\n")
+                print(" " * 18 + Fore.CYAN + "==== MENY ====" + Style.RESET_ALL)
                 print(" " * 18 + "1. View a report")
                 print(" " * 18 + "2. Delete a report")
                 print(" " * 18 + "3. Back to main menu")
@@ -203,6 +234,7 @@ def main_menu():
                     if not user_reports_exist:
                         print(" " * 18 + "You haven't created any reports yet! 🌸")
                         print(" " * 18 + "Let's create your first one! 🎀")
+                        print("\n")
                         input(Fore.BLUE + " " * 18 + "Press Enter to go back to main menu..." + Style.RESET_ALL)
                         continue
 
@@ -247,6 +279,7 @@ def main_menu():
                             _save_reports(all_reports)
                             clear_screen()
                             print(" " * 18 + Fore.GREEN + "Report deleted successfully! 🗑️✨" + Style.RESET_ALL)
+                            print("\n")
                             input(Fore.BLUE + " " * 18 +"Press Enter to continue..." + Style.RESET_ALL)
                             clear_screen()
                         else:

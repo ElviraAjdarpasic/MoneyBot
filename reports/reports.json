@@ -1,11 +1,6 @@
 [
     {
         "name": "Elvira Ajdarpasic",
-        "date": "2026-01-03 19:48",
-        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 90000.00\nExpenses: -999.00\nBalance: 89001.00\nPredicted next month: 118668.00"
-    },
-    {
-        "name": "Elvira Ajdarpasic",
         "date": "2026-01-03 19:49",
         "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 10000.00\nExpenses: -9000.00\nBalance: 1000.00\nPredicted next month: 1333.00"
     },
@@ -13,5 +8,60 @@
         "name": "Elvira Ajdarpasic",
         "date": "2026-01-03 19:57",
         "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 10000.00\nExpenses: -200.00\nBalance: 9800.00\nPredicted next month: 13066.00"
+    },
+    {
+        "name": "Elvira Ajdarpasic",
+        "date": "2026-01-04 21:33",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 1000.00\nExpenses: -2100.00\nBalance: -1100.00\nPredicted next month: -1467.00"
+    },
+    {
+        "name": "E E",
+        "date": "2026-01-04 21:55",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 3.00\nExpenses: -6.00\nBalance: -3.00\nPredicted next month: -4.00"
+    },
+    {
+        "name": "E E",
+        "date": "2026-01-04 21:55",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 3.00\nExpenses: -6.00\nBalance: -3.00\nPredicted next month: -4.00"
+    },
+    {
+        "name": "E E",
+        "date": "2026-01-04 21:56",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 3.00\nExpenses: -6.00\nBalance: -3.00\nPredicted next month: -4.00"
+    },
+    {
+        "name": "E E",
+        "date": "2026-01-04 21:58",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 3.00\nExpenses: -6.00\nBalance: -3.00\nPredicted next month: -4.00"
+    },
+    {
+        "name": "E E",
+        "date": "2026-01-04 21:59",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 1000.00\nExpenses: -1300.00\nBalance: -300.00\nPredicted next month: -400.00"
+    },
+    {
+        "name": "E E",
+        "date": "2026-01-04 22:02",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 100.00\nExpenses: -200.00\nBalance: -100.00\nPredicted next month: -134.00"
+    },
+    {
+        "name": "E E",
+        "date": "2026-01-04 22:04",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 3.00\nExpenses: -6.00\nBalance: -3.00\nPredicted next month: -4.00"
+    },
+    {
+        "name": "E E",
+        "date": "2026-01-04 22:05",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 3.00\nExpenses: -6.00\nBalance: -3.00\nPredicted next month: -4.00"
+    },
+    {
+        "name": "E E",
+        "date": "2026-01-04 22:06",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 500.00\nExpenses: -53000.00\nBalance: -52500.00\nPredicted next month: -70000.00"
+    },
+    {
+        "name": "E E",
+        "date": "2026-01-04 22:08",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 9000.00\nExpenses: -990.00\nBalance: 8010.00\nEstimated money left for next month: 10680.00\n(This shows roughly how much you could have left if your income and spending stay similar)"
     }
 ]

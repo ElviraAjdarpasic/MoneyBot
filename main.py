@@ -29,7 +29,7 @@ def welcome_user():
     print(" " * 6 + "This shows how much money could stay in your pocket next month")
     print(" " * 15 +"if you keep things similar! 🌸")
     print("\n\n")
-    print("✨ Who’s using MoneyBot today?")
+    print("Who’s using MoneyBot today?")
     print("\n")
 
     # Förnamn
@@ -48,9 +48,9 @@ def welcome_user():
             print(" " * 6 + "This shows how much money could stay in your pocket next month")
             print(" " * 15 +"if you keep things similar!")
             print("\n\n")
-            print("✨ Who’s using MoneyBot today?")
+            print("Who’s using MoneyBot today?")
             print("\n")            
-            print("Oops! Please enter a real first name (letters only) 💕")
+            print(Fore.RED +"Oops! Please enter a real last name (letters only) 💕"+ Style.RESET_ALL)
     #Efternamn
     while True:
         last_name = input("And your last name? ").strip().capitalize()
@@ -67,7 +67,7 @@ def welcome_user():
             print(" " * 6 + "This shows how much money could stay in your pocket next month")
             print(" " * 15 +"if you keep things similar!")
             print("\n\n")
-            print("✨ Who’s using MoneyBot today?")
+            print("Who’s using MoneyBot today?")
             print("\n")
             print(f"First name: {first_name} ✓")
             print(Fore.RED +"Oops! Please enter a real last name (letters only) 💕"+ Style.RESET_ALL)
@@ -213,12 +213,12 @@ def main_menu():
                 print(" " * 18 + f"[MoneyBot] INFO: {c}")
             
             print("\n")
-            input(Fore.BLUE + " " * 18 + "Press Enter to continue..."+ Style.RESET_ALL)
+            input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
             clear_screen()
 
         elif choice == "2":
-            clear_screen()
             while True:
+                clear_screen()
                 print("\n" * 3)
                 print(" " * 18 + Fore.CYAN + "==== MENY ====" + Style.RESET_ALL)
                 print(" " * 18 + "1. View a report")
@@ -231,33 +231,45 @@ def main_menu():
                 if sub_choice == "1":
                     clear_screen()
                     user_reports_exist = list_reports(full_name)
+
                     if not user_reports_exist:
                         print(" " * 18 + "You haven't created any reports yet! 🌸")
                         print(" " * 18 + "Let's create your first one! 🎀")
                         print("\n")
                         input(Fore.BLUE + " " * 18 + "Press Enter to go back to main menu..." + Style.RESET_ALL)
+                        clear_screen()
                         continue
 
-                    try:
-                        num = int(input(" " * 18 + "Select report number to view: ")) - 1
-                        clear_screen()
-                        all_reports = _load_reports()
-                        user_reports = [r for r in all_reports if r.get("name", "Unknown").title() == full_name.title()]
-                        
-                        report = user_reports[num]
-                        print("\n")
-                        for line in report["summary"].split("\n"):
-                            if line.strip():
-                                print(" " * 18 + line)
-                            else:
-                                print()
-                        print("\n" + " " * 18 + f"Report by: {report['name']} on {report['date']}")
-                        input(Fore.BLUE + " " * 18 +"Press Enter to continue..." + Style.RESET_ALL)
-                        clear_screen()
-                    except (ValueError, IndexError):
-                        print(Fore.RED + "Invalid report number! Please try again. 😅" + Style.RESET_ALL)
-                        input(Fore.BLUE + " " * 18 +"Press Enter to continue..." + Style.RESET_ALL)
-                        clear_screen()
+                    while True:
+                        try:
+                            choice_num = int(input(" " * 18 + "Select report number to view: "))
+                            all_reports = _load_reports()
+                            user_reports = [r for r in all_reports if r.get("name", "Unknown").title() == full_name.title()]
+
+                            if choice_num < 1 or choice_num > len(user_reports):
+                                print(Fore.RED + " " * 18 + "Invalid report number! Please try again. 😅" + Style.RESET_ALL)
+                                input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
+                                clear_screen()
+                                continue
+
+                            num = choice_num - 1
+                            clear_screen()
+
+                            report = user_reports[num]
+                            print("\n")
+                            for line in report["summary"].split("\n"):
+                                if line.strip():
+                                    print(" " * 18 + line)
+                                else:
+                                    print()
+                            print("\n" + " " * 18 + f"Report by: {report['name']} on {report['date']}")
+                            input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
+                            clear_screen()
+                            break
+                        except (ValueError, IndexError):
+                            print(Fore.RED + "Invalid report number! Please try again. 😅" + Style.RESET_ALL)
+                            input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
+                            clear_screen()
 
                 elif sub_choice == "2":
                     clear_screen()
@@ -266,7 +278,7 @@ def main_menu():
                     
                     if not user_reports:
                         print(" " * 18 + "You haven't created any reports yet! 🌸")
-                        input(Fore.BLUE + " " * 18 +"Press Enter to continue..." + Style.RESET_ALL)
+                        input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
                         clear_screen()
                         continue
 
@@ -280,23 +292,23 @@ def main_menu():
                             clear_screen()
                             print(" " * 18 + Fore.GREEN + "Report deleted successfully! 🗑️✨" + Style.RESET_ALL)
                             print("\n")
-                            input(Fore.BLUE + " " * 18 +"Press Enter to continue..." + Style.RESET_ALL)
+                            input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
                             clear_screen()
                         else:
                             print(Fore.RED + "Invalid number! Please choose an existing report number." + Style.RESET_ALL)
-                            input(Fore.BLUE +" " * 18 + "Press Enter to try again..." + Style.RESET_ALL)
+                            input(Fore.BLUE + " " * 18 + "Press Enter to try again..." + Style.RESET_ALL)
                             clear_screen()
                     except ValueError:
-                        print(Fore.RED + "Invalid input! Please enter a number." + Style.RESET_ALL)
-                        input(Fore.BLUE +" " * 18 + "Press Enter to try again..." + Style.RESET_ALL)
+                        print(Fore.RED + " " * 18 + "Please enter a number." + Style.RESET_ALL)
+                        input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
                         clear_screen()
 
                 elif sub_choice == "3":
                     clear_screen()
-                    break 
+                    break
 
                 else:
-                    print(Fore.RED + " " * 18 + "Invalid choice, please try again." + Style.RESET_ALL)
+                    print(Fore.RED + " " * 18 + "Invalid choice." + Style.RESET_ALL)
                     input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
                     clear_screen()
 

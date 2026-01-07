@@ -51,12 +51,17 @@
     },
     {
         "name": "Elvira Ajdarpasic",
-        "date": "2026-01-06 00:52",
-        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 1000.00\nExpenses: -110.00\nBalance: 890.00\nEstimated money left for next month: 1186.00"
+        "date": "2026-01-07 09:57",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 10000.00\nExpenses: -11000.00\nBalance: -1000.00\nEstimated money left for next month: -1333.33"
     },
     {
         "name": "Elvira Ajdarpasic",
-        "date": "2026-01-06 01:05",
-        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 2.00\nExpenses: -2.00\nBalance: 0.00\nEstimated money left for next month: 0.00"
+        "date": "2026-01-07 10:54",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 10000.00\nExpenses: -200.00\nBalance: 9800.00\nEstimated money left for next month: 13066.67"
+    },
+    {
+        "name": "Elvira Ajdarpasic",
+        "date": "2026-01-07 11:00",
+        "summary": "\u001b[36m==== ECONOMIC REPORT ====\u001b[0m\nIncome: 0.00\nExpenses: 0.00\nBalance: 0.00\nEstimated money left for next month: 0.00"
     }
 ]

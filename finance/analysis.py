@@ -19,5 +19,5 @@ class FinanceAnalysis:
     def predicted_next_month(self):
         if not self.transactions:
             return 0
-        average = sum(self.transactions) // len(self.transactions)
+        average = sum(self.transactions) / len(self.transactions)
         return self.total_balance() + average

@@ -256,6 +256,7 @@ def main_menu():
                         
                             if choice_num < 1 or choice_num > len(user_reports):
                                print(Fore.RED + " " * 18 + "Invalid report number! Please try again." + Style.RESET_ALL)
+                               print("\n")
                                input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
                                continue
 
@@ -267,12 +268,14 @@ def main_menu():
                                 print(" " * 18 + line)
 
                             print("\n" + " " * 18 + f"Report by: {report['name']} on {report['date']}")
+                            print("\n")
                             input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
                             clear_screen()
                             break
 
                         except ValueError:
                             print(Fore.RED + " " * 18 + "Please enter a number." + Style.RESET_ALL)
+                            print("\n")
                             input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
                             clear_screen()
 
@@ -283,6 +286,7 @@ def main_menu():
                     if not user_reports:
                         clear_screen()
                         print(" " * 18 + "You haven't created any reports yet! 🌸")
+                        print("\n")
                         input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
                         clear_screen()
                         continue
@@ -310,6 +314,7 @@ def main_menu():
                             clear_screen()
                     except ValueError:
                         print(Fore.RED + " " * 18 + "Please enter a number." + Style.RESET_ALL)
+                        print("\n")
                         input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
                         clear_screen()
 
@@ -319,6 +324,7 @@ def main_menu():
 
                 else:
                     print(Fore.RED + " " * 18 + "Invalid choice, please try again." + Style.RESET_ALL)
+                    print("\n")
                     input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
                     clear_screen()
 
@@ -332,6 +338,7 @@ def main_menu():
 
         else:
             print(Fore.RED + " " * 18 + "Invalid choice, please try again." + Style.RESET_ALL)
+            print("\n")
             input(Fore.BLUE + " " * 18 + "Press Enter to continue..." + Style.RESET_ALL)
             clear_screen()
 
